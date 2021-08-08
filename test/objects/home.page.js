@@ -6,17 +6,17 @@ const Page = require('./page')
 class HomePage extends Page {
 
     get btnManageItems() {
-        const buttons = $$('.mr-2')
+        const buttons = $$('button[class="mr-2 btn btn-info"]')
         return buttons[0]
     }
 
-    get btnManageItems() {
-        const buttons = $$('.mr-2')
+    get btnManageFolders() {
+        const buttons = $$('button[class="mr-2 btn btn-info"]')
         return buttons[1]
     }
 
     get logMessage() {
-        return $('[role="alert"]')
+        return $('[class="alert alert-success fade show"]')
     }
 
     get manageListMenu() {
@@ -50,7 +50,7 @@ class HomePage extends Page {
 
     clickFolderOption() {
         this.manageListMenu.click()
-        this.toDoItemsOption.click()
+        this.folderOption.click()
     }
 
     clickSettingsOption() {

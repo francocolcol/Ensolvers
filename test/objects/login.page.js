@@ -15,6 +15,8 @@ class LoginPage extends Page {
     get emptyUsernameMessage () { return $ ('.invalid-feedback')}
     get emptyPasswordMessage () { return $ ('.invalid-feedback')}
     get loginModal () { return $('.modal-content') }
+    get forgetPasswordLink() { return $('[data-cy="forgetYourPasswordSelector"]') }
+    get remembermeCheckBox () { return $('#rememberMe') }
 
     /**
      * a method to encapsule automation code to interact with the page
