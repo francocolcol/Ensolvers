@@ -5,22 +5,26 @@ const Page = require('./page')
  */
 class FolderPage extends Page {
 
-    get createFolderButton () { return $('#jh-create-entity') }
-    get refreshButton () { return $('[class="mr-2 btn btn-info"]')}
-    get newFolderMessage () { return $('[class="Toastify__toast-body"]')}
-    viewButton (positionInList) {
-        const viewButtons = $$('[data-cy="entityDetailsButton"]')
-        return viewButtons[positionInList]
-    }
-    editButton (positionInList) {
-        const editButtons = $$('[class="btn btn-primary btn-sm"]')
-        return editButtons[positionInList]
-    }
-    deleteButton (positionInList) {
-        const deleteButtons = $$('[class="btn btn-danger btn-sm"')
-        return deleteButtons[positionInList]
+    get createFolderButton() { return $('#jh-create-entity') }
+    get refreshButton() { return $('.mr-2.btn.btn-info') }
+    get message() { return $('.Toastify__toast-body') }
+    get viewButtons () {
+        return $$(`#folder-heading+.table-responsive .table tbody tr a[data-cy="entityDetailsButton"]`)
     }
 
+    get editButtons() {
+        return $$(`#folder-heading+.table-responsive .table tbody tr a[data-cy="entityEditButton"]`)
+    }
+    get deleteButtons() {
+        return $$(`#folder-heading+.table-responsive .table tbody tr a[data-cy="entityDeleteButton"]`)
+    }
+
+    get ids (){
+        return $$(`#folder-heading+.table-responsive .table tbody tr a.btn.btn.btn-link.btn-sm`).map(Element => Element.getText())
+    }
+
+    get confirmDeleteButton () { return $(`#jhi-confirm-delete-folder`)}
+    get cancelDeleteButton () { return $(`div.modal-footer button.btn.btn-secondary`)}
 
     open() {
         return super.open('folder')
